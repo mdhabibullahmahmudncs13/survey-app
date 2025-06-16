@@ -8,7 +8,7 @@ import TechnicalSkills from '@/components/survey/TechnicalSkills';
 import ReviewSubmit from '@/components/survey/ReviewSubmit';
 import SuccessMessage from '@/components/survey/SuccessMessage';
 import ProgressBar from '@/components/survey/ProgressBar';
-import { Notebook as Robot, Zap, Cpu } from 'lucide-react';
+import { Notebook, Zap, Cpu } from 'lucide-react';
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -71,7 +71,7 @@ export default function Home() {
         <div className="text-center mb-12">
           <div className="flex justify-center items-center gap-4 mb-6">
             <div className="relative">
-              <Robot className="w-12 h-12 text-cyan-400 animate-bounce" />
+              <Notebook className="w-12 h-12 text-cyan-400 animate-bounce" />
               <div className="absolute inset-0 bg-cyan-400/20 rounded-full animate-ping" />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
@@ -98,7 +98,7 @@ export default function Home() {
               <span className="text-sm">Arduino & Sensors</span>
             </div>
             <div className="flex items-center gap-2">
-              <Robot className="w-5 h-5 text-green-400" />
+              <Notebook className="w-5 h-5 text-green-400" />
               <span className="text-sm">AI & Robotics</span>
             </div>
             <div className="flex items-center gap-2">
