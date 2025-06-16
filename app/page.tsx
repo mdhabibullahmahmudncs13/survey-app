@@ -9,7 +9,6 @@ import ReviewSubmit from '@/components/survey/ReviewSubmit';
 import SuccessMessage from '@/components/survey/SuccessMessage';
 import ProgressBar from '@/components/survey/ProgressBar';
 import { Bot, Zap, Cpu } from 'lucide-react';
-import Image from 'next/image';
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -71,33 +70,14 @@ export default function Home() {
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="flex justify-center items-center gap-6 mb-6">
+          <div className="flex justify-center items-center gap-4 mb-6">
             <div className="relative">
               <Bot className="w-12 h-12 text-pink-500 pulse-neon floating-animation" />
               <div className="absolute inset-0 bg-pink-400/20 rounded-full animate-ping" />
             </div>
-            
-            {/* NCC Logo */}
-            <div className="relative">
-              <Image
-                src="/ncc.png"
-                alt="NITER Computer Club"
-                width={80}
-                height={80}
-                className="floating-animation"
-                style={{ animationDelay: '0.5s' }}
-              />
-            </div>
-            
-            <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
-                NITER Computer Club
-              </h1>
-              <p className="text-xl md:text-2xl font-semibold text-gray-700 mt-2">
-                Robotics Segment
-              </p>
-            </div>
-            
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
+              NCC Robotics
+            </h1>
             <div className="relative">
               <Zap className="w-12 h-12 text-cyan-500 pulse-neon floating-animation" style={{ animationDelay: '1s' }} />
               <div className="absolute inset-0 bg-cyan-400/20 rounded-full animate-ping" style={{ animationDelay: '500ms' }} />
@@ -143,7 +123,7 @@ export default function Home() {
 
         {/* Footer */}
         <div className="text-center mt-12 text-gray-500 text-sm">
-          <p>© 2025 NITER Computer Club - Robotics Segment. Building the future, one robot at a time.</p>
+          <p>© 2025 NCC Robotics Segment. Building the future, one robot at a time.</p>
         </div>
       </div>
     </div>
