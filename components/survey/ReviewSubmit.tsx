@@ -5,9 +5,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, ChevronLeft, Loader2, User, Mail, Phone, Cpu, Target, Code, Calendar, MessageSquare, GraduationCap, BookOpen, IdCard, AlertCircle } from 'lucide-react';
+import { CheckCircle, ChevronLeft, Loader2, User, Mail, Phone, Cpu, Target, Code, Calendar, MessageSquare, GraduationCap, BookOpen, IdCard, AlertCircle, Database } from 'lucide-react';
 import { SurveyResponse } from '@/types/survey';
-import { databases, DATABASE_ID, COLLECTION_ID } from '@/lib/appwrite';
+import { databases, DATABASE_ID, COLLECTION_ID, checkAppwriteConfig, testAppwriteConnection } from '@/lib/appwrite';
 import { ID } from 'appwrite';
 
 interface ReviewSubmitProps {
@@ -19,12 +19,22 @@ interface ReviewSubmitProps {
 export default function ReviewSubmit({ data, onBack, onSuccess }: ReviewSubmitProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [submissionMethod, setSubmissionMethod] = useState<'appwrite' | 'localStorage' | null>(null);
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
     setError(null);
+    setSubmissionMethod(null);
 
     try {
+      // Check Appwrite configuration first
+      const config = checkAppwriteConfig();
+      console.log('Appwrite config check:', config);
+
+      if (!config.isConfigured) {
+        throw new Error('Appwrite is not properly configured. Missing environment variables.');
+      }
+
       // Prepare data for Appwrite (convert camelCase to snake_case for database)
       const submissionData = {
         name: data.name,
@@ -44,16 +54,49 @@ export default function ReviewSubmit({ data, onBack, onSuccess }: ReviewSubmitPr
 
       // Try to submit to Appwrite first
       try {
-        await databases.createDocument(
+        console.log('Attempting Appwrite submission...');
+        
+        // Test connection first
+        const connectionTest = await testAppwriteConnection();
+        if (!connectionTest.success) {
+          throw connectionTest.error;
+        }
+
+        // Submit to Appwrite
+        const response = await databases.createDocument(
           DATABASE_ID,
           COLLECTION_ID,
           ID.unique(),
           submissionData
         );
         
-        console.log('Survey submitted successfully to Appwrite');
-      } catch (appwriteError) {
-        console.warn('Appwrite submission failed, using fallback:', appwriteError);
+        console.log('Survey submitted successfully to Appwrite:', response);
+        setSubmissionMethod('appwrite');
+        
+      } catch (appwriteError: any) {
+        console.warn('Appwrite submission failed:', appwriteError);
+        
+        // Provide specific error messages
+        let errorMessage = 'Unknown Appwrite error';
+        if (appwriteError.message) {
+          errorMessage = appwriteError.message;
+        } else if (appwriteError.code) {
+          switch (appwriteError.code) {
+            case 404:
+              errorMessage = 'Database or collection not found. Please check your Appwrite configuration.';
+              break;
+            case 401:
+              errorMessage = 'Permission denied. Please check your API key and collection permissions.';
+              break;
+            case 400:
+              errorMessage = 'Invalid data format. Please check your collection attributes.';
+              break;
+            default:
+              errorMessage = `Appwrite error (${appwriteError.code}): ${appwriteError.message || 'Unknown error'}`;
+          }
+        }
+        
+        console.warn(`Appwrite failed (${errorMessage}), using localStorage fallback`);
         
         // Fallback: Store in localStorage for demonstration
         const fallbackData = {
@@ -66,16 +109,20 @@ export default function ReviewSubmit({ data, onBack, onSuccess }: ReviewSubmitPr
         existingSubmissions.push(fallbackData);
         localStorage.setItem('ncc_survey_submissions', JSON.stringify(existingSubmissions));
         
-        console.log('Survey stored locally as fallback');
+        console.log('Survey stored locally as fallback:', fallbackData);
+        setSubmissionMethod('localStorage');
+        
+        // Set a warning message but don't fail the submission
+        setError(`Appwrite unavailable (${errorMessage}). Data saved locally as backup.`);
       }
 
       // Simulate processing time for better UX
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       onSuccess();
-    } catch (err) {
-      console.error('Submission error:', err);
-      setError('Failed to submit survey. Please check your connection and try again.');
+    } catch (err: any) {
+      console.error('Complete submission failure:', err);
+      setError(`Failed to submit survey: ${err.message || 'Unknown error'}. Please check your connection and try again.`);
     } finally {
       setIsSubmitting(false);
     }
@@ -252,29 +299,78 @@ export default function ReviewSubmit({ data, onBack, onSuccess }: ReviewSubmitPr
             )}
           </div>
 
-          {/* Error Message */}
+          {/* Error/Warning Message */}
           {error && (
-            <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+            <div className={`p-4 border rounded-lg flex items-start gap-3 ${
+              submissionMethod === 'localStorage' 
+                ? 'bg-yellow-50 border-yellow-200' 
+                : 'bg-red-50 border-red-200'
+            }`}>
+              <AlertCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                submissionMethod === 'localStorage' ? 'text-yellow-500' : 'text-red-500'
+              }`} />
               <div>
-                <p className="text-red-600 text-sm font-medium">Submission Failed</p>
-                <p className="text-red-600 text-sm">{error}</p>
+                <p className={`text-sm font-medium ${
+                  submissionMethod === 'localStorage' ? 'text-yellow-700' : 'text-red-600'
+                }`}>
+                  {submissionMethod === 'localStorage' ? 'Fallback Mode Active' : 'Submission Failed'}
+                </p>
+                <p className={`text-sm ${
+                  submissionMethod === 'localStorage' ? 'text-yellow-600' : 'text-red-600'
+                }`}>
+                  {error}
+                </p>
+                {submissionMethod === 'localStorage' && (
+                  <p className="text-yellow-600 text-xs mt-1">
+                    Your data is safely stored locally. Please contact the administrator to resolve the database connection.
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Submission Method Indicator */}
+          {submissionMethod && (
+            <div className={`p-4 border rounded-lg flex items-start gap-3 ${
+              submissionMethod === 'appwrite' 
+                ? 'bg-green-50 border-green-200' 
+                : 'bg-blue-50 border-blue-200'
+            }`}>
+              <Database className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                submissionMethod === 'appwrite' ? 'text-green-500' : 'text-blue-500'
+              }`} />
+              <div>
+                <p className={`text-sm font-medium ${
+                  submissionMethod === 'appwrite' ? 'text-green-700' : 'text-blue-700'
+                }`}>
+                  {submissionMethod === 'appwrite' ? 'Submitted to Appwrite Database' : 'Stored Locally'}
+                </p>
+                <p className={`text-sm ${
+                  submissionMethod === 'appwrite' ? 'text-green-600' : 'text-blue-600'
+                }`}>
+                  {submissionMethod === 'appwrite' 
+                    ? 'Your submission has been successfully saved to the cloud database.'
+                    : 'Your submission has been saved locally and will be synced when the database is available.'
+                  }
+                </p>
               </div>
             </div>
           )}
 
           {/* Submission Info */}
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-blue-700 text-sm font-medium">Ready to Submit</p>
-                <p className="text-blue-600 text-sm">
-                  Your information will be securely stored and you'll receive a confirmation email within 2-3 business days.
-                </p>
+          {!error && !submissionMethod && (
+            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-blue-700 text-sm font-medium">Ready to Submit</p>
+                  <p className="text-blue-600 text-sm">
+                    Your information will be securely stored and you'll receive a confirmation email within 2-3 business days.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Action Buttons */}
           <div className="flex gap-4">
