@@ -1,4 +1,4 @@
-# Appwrite Setup Guide for NCC Robotics Survey
+# Appwrite Setup Guide for NCC Robotics Surveyz
 
 This comprehensive guide will help you set up Appwrite as the backend for the NCC Robotics survey website and resolve the persistent fallback issues.
 
