@@ -79,12 +79,12 @@ export default function Home() {
             
             {/* NCC Logo */}
             <div className="relative">
-              <img
-                src="https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop"
-                alt="NITER Computer Club - Official Logo"
-                width="80"
-                height="80"
-                className="floating-animation rounded-full border-2 border-white/50 shadow-lg"
+              <Image
+                src="/ncc.png"
+                alt="NITER Computer Club"
+                width={80}
+                height={80}
+                className="floating-animation"
                 style={{ animationDelay: '0.5s' }}
               />
             </div>
