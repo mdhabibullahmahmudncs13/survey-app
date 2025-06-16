@@ -2,7 +2,7 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Notebook, Calendar, Mail } from 'lucide-react';
+import { CheckCircle, Bot, Calendar, Mail } from 'lucide-react';
 
 interface SuccessMessageProps {
   onReset: () => void;
@@ -29,7 +29,7 @@ export default function SuccessMessage({ onReset }: SuccessMessageProps) {
 
           <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
             <h3 className="text-xl font-semibold text-white mb-4 flex items-center justify-center gap-2">
-              <Notebook className="w-6 h-6 text-cyan-400" />
+              <Bot className="w-6 h-6 text-cyan-400" />
               What Happens Next?
             </h3>
             <div className="space-y-4 text-left">
@@ -48,7 +48,7 @@ export default function SuccessMessage({ onReset }: SuccessMessageProps) {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Notebook className="w-5 h-5 text-cyan-400 mt-1" />
+                <Bot className="w-5 h-5 text-cyan-400 mt-1" />
                 <div>
                   <p className="text-white font-medium">Preparation Materials</p>
                   <p className="text-slate-300 text-sm">Pre-workshop materials and setup instructions will be shared via email.</p>
