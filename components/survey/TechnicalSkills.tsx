@@ -31,16 +31,16 @@ const programmingLanguages = [
 
 const availabilityOptions = [
   '20 June 2025-Friday-(9 AM - 4 PM)',
-  '21 June 2025 (9 AM - 4 PM)',
-  '22 June 2025 (9 AM - 4 PM)',
-  '23 June 2025 (9 AM - 4 PM)',
-  '24 June 2025 (9 AM - 4 PM)',
-  '25 June 2025 (9 AM - 4 PM)',
-  '26 June 2025 (9 AM - 4 PM)',
-  '27 June 2025 (9 AM - 4 PM)',
-  '28 June 2025 (9 AM - 4 PM)',
-  '29 June 2025 (9 AM - 4 PM)',
-  '30 June 2025 (9 AM - 4 PM)'
+  '21 June 2025-Saturday-(9 AM - 4 PM)',
+  '22 June 2025-Sunday-(9 AM - 4 PM)',
+  '23 June 2025-Monday-(9 AM - 4 PM)',
+  '24 June 2025-Tuesday-(9 AM - 4 PM)',
+  '25 June 2025-Wednesday-(9 AM - 4 PM)',
+  '26 June 2025-Thursday-(9 AM - 4 PM)',
+  '27 June 2025-Friday-(9 AM - 4 PM)',
+  '28 June 2025-Saturday-(9 AM - 4 PM)',
+  '29 June 2025-Sunday-(9 AM - 4 PM)',
+  '30 June 2025-Monday-(9 AM - 4 PM)'
 ];
 
 export default function TechnicalSkills({ data, onNext, onBack }: TechnicalSkillsProps) {
