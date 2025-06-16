@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
-import { Notebook as Robot, Cpu, Zap, Settings, ChevronLeft } from 'lucide-react';
+import { Bot, Cpu, Zap, Settings, ChevronLeft } from 'lucide-react';
 import { SurveyResponse } from '@/types/survey';
 
 interface WorkshopPreferencesProps {
@@ -18,9 +18,9 @@ interface WorkshopPreferencesProps {
 const workshopTopics = [
   { id: 'arduino-basics', label: 'Arduino Programming Basics', icon: Cpu },
   { id: 'sensor-integration', label: 'Sensor Integration & IoT', icon: Zap },
-  { id: 'robotics-design', label: 'Robot Design & Mechanics', icon: Robot },
+  { id: 'robotics-design', label: 'Robot Design & Mechanics', icon: Bot },
   { id: 'ai-robotics', label: 'AI & Machine Learning in Robotics', icon: Settings },
-  { id: 'autonomous-systems', label: 'Autonomous Navigation Systems', icon: Robot },
+  { id: 'autonomous-systems', label: 'Autonomous Navigation Systems', icon: Bot },
   { id: 'computer-vision', label: 'Computer Vision & Image Processing', icon: Zap },
   { id: 'robot-control', label: 'Advanced Robot Control Systems', icon: Settings },
   { id: 'drone-technology', label: 'Drone Technology & Applications', icon: Cpu },
