@@ -73,7 +73,7 @@ export default function AdminPanel() {
           workshopTopics: ['arduino-basics', 'sensor-integration'],
           expectations: 'I want to learn the basics of robotics and how to program Arduino boards.',
           programmingLanguages: ['Python', 'C/C++'],
-          availability: '22 June (9 AM - 4 PM)',
+          availability: '22 June 2025 (9 AM - 4 PM)',
           additionalComments: 'Very excited to participate!',
           submitted_at: '2025-01-08T10:30:00Z'
         },
@@ -89,7 +89,7 @@ export default function AdminPanel() {
           workshopTopics: ['ai-robotics', 'computer-vision'],
           expectations: 'Looking forward to advanced AI applications in robotics.',
           programmingLanguages: ['Python', 'MATLAB', 'JavaScript'],
-          availability: '25 June (9 AM - 4 PM)',
+          availability: '25 June 2025 (9 AM - 4 PM)',
           additionalComments: '',
           submitted_at: '2025-01-08T14:15:00Z'
         }
@@ -130,7 +130,7 @@ export default function AdminPanel() {
     const headers = [
       'Name', 'Email', 'Phone', 'Student ID', 'Batch', 'Department', 
       'Experience Level', 'Workshop Topics', 'Programming Languages', 
-      'Availability', 'Expectations', 'Additional Comments', 'Submitted At'
+      'Preferred Date', 'Expectations', 'Additional Comments', 'Submitted At'
     ];
     
     const csvContent = [

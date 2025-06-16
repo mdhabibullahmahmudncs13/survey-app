@@ -30,17 +30,17 @@ const programmingLanguages = [
 ];
 
 const availabilityOptions = [
-  '20 June (9 AM - 4 PM)',
-  '21 June (9 AM - 4 PM)',
-  '22 June (9 AM - 4 PM)',
-  '23 June (9 AM - 4 PM)',
-  '24 June (9 AM - 4 PM)',
-  '25 June (9 AM - 4 PM)',
-  '26 June (9 AM - 4 PM)',
-  '27 June (9 AM - 4 PM)',
-  '28 June (9 AM - 4 PM)',
-  '29 June (9 AM - 4 PM)',
-  '30 June (9 AM - 4 PM)'
+  '20 June 2025 (9 AM - 4 PM)',
+  '21 June 2025 (9 AM - 4 PM)',
+  '22 June 2025 (9 AM - 4 PM)',
+  '23 June 2025 (9 AM - 4 PM)',
+  '24 June 2025 (9 AM - 4 PM)',
+  '25 June 2025 (9 AM - 4 PM)',
+  '26 June 2025 (9 AM - 4 PM)',
+  '27 June 2025 (9 AM - 4 PM)',
+  '28 June 2025 (9 AM - 4 PM)',
+  '29 June 2025 (9 AM - 4 PM)',
+  '30 June 2025 (9 AM - 4 PM)'
 ];
 
 export default function TechnicalSkills({ data, onNext, onBack }: TechnicalSkillsProps) {
@@ -116,7 +116,7 @@ export default function TechnicalSkills({ data, onNext, onBack }: TechnicalSkill
               Preferred Workshop Date *
             </Label>
             <p className="text-slate-300 text-sm mb-3">
-              Workshop runs from 20 June to 30 June (9 AM - 4 PM daily). Select your preferred date:
+              Workshop runs from 20 June 2025 to 30 June 2025 (9 AM - 4 PM daily). Select your preferred date:
             </p>
             <Select value={availability} onValueChange={setAvailability}>
               <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
