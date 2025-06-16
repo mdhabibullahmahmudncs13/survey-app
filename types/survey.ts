@@ -2,7 +2,6 @@ export interface SurveyResponse {
   name: string;
   email: string;
   phone: string;
-  institution: string;
   experienceLevel: 'beginner' | 'intermediate' | 'advanced';
   batch: '10th' | '11th' | '12th' | '13th' | '14th';
   department: 'TEX' | 'IPE' | 'CSE' | 'EEE' | 'FDAE';

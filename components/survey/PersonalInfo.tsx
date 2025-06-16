@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { User, Mail, Phone, Building, GraduationCap, BookOpen, IdCard } from 'lucide-react';
+import { User, Mail, Phone, GraduationCap, BookOpen, IdCard } from 'lucide-react';
 import { SurveyResponse } from '@/types/survey';
 
 interface PersonalInfoProps {
@@ -19,7 +19,6 @@ export default function PersonalInfo({ data, onNext }: PersonalInfoProps) {
     name: data.name || '',
     email: data.email || '',
     phone: data.phone || '',
-    institution: data.institution || '',
     experienceLevel: data.experienceLevel || '',
     batch: data.batch || '',
     department: data.department || '',
@@ -37,7 +36,6 @@ export default function PersonalInfo({ data, onNext }: PersonalInfoProps) {
       newErrors.email = 'Please enter a valid email';
     }
     if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
-    if (!formData.institution.trim()) newErrors.institution = 'Institution is required';
     if (!formData.experienceLevel) newErrors.experienceLevel = 'Experience level is required';
     if (!formData.batch) newErrors.batch = 'Batch is required';
     if (!formData.department) newErrors.department = 'Department is required';
@@ -126,22 +124,6 @@ export default function PersonalInfo({ data, onNext }: PersonalInfoProps) {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="institution" className="text-white flex items-center gap-2">
-                <Building className="w-4 h-4" />
-                Institution/Organization *
-              </Label>
-              <Input
-                id="institution"
-                value={formData.institution}
-                onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
-                placeholder="Your school, college, or company"
-                className="bg-slate-800/50 border-slate-600 text-white"
-                error={errors.institution}
-              />
-              {errors.institution && <p className="text-red-400 text-sm">{errors.institution}</p>}
-            </div>
-
-            <div className="space-y-2">
               <Label className="text-white flex items-center gap-2">
                 <GraduationCap className="w-4 h-4" />
                 Batch *
@@ -181,7 +163,7 @@ export default function PersonalInfo({ data, onNext }: PersonalInfoProps) {
               {errors.department && <p className="text-red-400 text-sm">{errors.department}</p>}
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 md:col-span-2">
               <Label className="text-white">Experience Level with Robotics *</Label>
               <Select value={formData.experienceLevel} onValueChange={(value) => setFormData({ ...formData, experienceLevel: value })}>
                 <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">

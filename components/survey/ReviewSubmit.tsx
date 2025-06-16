@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, ChevronLeft, Loader2, User, Mail, Phone, Building, Cpu, Target, Code, Calendar, MessageSquare, GraduationCap, BookOpen, IdCard } from 'lucide-react';
+import { CheckCircle, ChevronLeft, Loader2, User, Mail, Phone, Cpu, Target, Code, Calendar, MessageSquare, GraduationCap, BookOpen, IdCard } from 'lucide-react';
 import { SurveyResponse } from '@/types/survey';
 
 interface ReviewSubmitProps {
@@ -94,11 +94,6 @@ export default function ReviewSubmit({ data, onBack, onSuccess }: ReviewSubmitPr
                   <IdCard className="w-4 h-4 text-slate-400" />
                   <span className="text-slate-300">Student ID:</span>
                   <span className="text-white font-medium">{data.studentId}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Building className="w-4 h-4 text-slate-400" />
-                  <span className="text-slate-300">Institution:</span>
-                  <span className="text-white font-medium">{data.institution}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <GraduationCap className="w-4 h-4 text-slate-400" />
