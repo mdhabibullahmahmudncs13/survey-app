@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { User, Mail, Phone, Building } from 'lucide-react';
+import { User, Mail, Phone, Building, GraduationCap, BookOpen, IdCard } from 'lucide-react';
 import { SurveyResponse } from '@/types/survey';
 
 interface PersonalInfoProps {
@@ -21,6 +21,9 @@ export default function PersonalInfo({ data, onNext }: PersonalInfoProps) {
     phone: data.phone || '',
     institution: data.institution || '',
     experienceLevel: data.experienceLevel || '',
+    batch: data.batch || '',
+    department: data.department || '',
+    studentId: data.studentId || '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -36,6 +39,9 @@ export default function PersonalInfo({ data, onNext }: PersonalInfoProps) {
     if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
     if (!formData.institution.trim()) newErrors.institution = 'Institution is required';
     if (!formData.experienceLevel) newErrors.experienceLevel = 'Experience level is required';
+    if (!formData.batch) newErrors.batch = 'Batch is required';
+    if (!formData.department) newErrors.department = 'Department is required';
+    if (!formData.studentId.trim()) newErrors.studentId = 'Student ID is required';
 
     setErrors(newErrors);
 
@@ -104,6 +110,22 @@ export default function PersonalInfo({ data, onNext }: PersonalInfoProps) {
             </div>
 
             <div className="space-y-2">
+              <Label htmlFor="studentId" className="text-white flex items-center gap-2">
+                <IdCard className="w-4 h-4" />
+                Student ID *
+              </Label>
+              <Input
+                id="studentId"
+                value={formData.studentId}
+                onChange={(e) => setFormData({ ...formData, studentId: e.target.value })}
+                placeholder="Enter your student ID"
+                className="bg-slate-800/50 border-slate-600 text-white"
+                error={errors.studentId}
+              />
+              {errors.studentId && <p className="text-red-400 text-sm">{errors.studentId}</p>}
+            </div>
+
+            <div className="space-y-2">
               <Label htmlFor="institution" className="text-white flex items-center gap-2">
                 <Building className="w-4 h-4" />
                 Institution/Organization *
@@ -118,21 +140,61 @@ export default function PersonalInfo({ data, onNext }: PersonalInfoProps) {
               />
               {errors.institution && <p className="text-red-400 text-sm">{errors.institution}</p>}
             </div>
-          </div>
 
-          <div className="space-y-2">
-            <Label className="text-white">Experience Level with Robotics *</Label>
-            <Select value={formData.experienceLevel} onValueChange={(value) => setFormData({ ...formData, experienceLevel: value })}>
-              <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
-                <SelectValue placeholder="Select your experience level" />
-              </SelectTrigger>
-              <SelectContent className="bg-slate-800 border-slate-600">
-                <SelectItem value="beginner" className="text-white">Beginner - New to robotics</SelectItem>
-                <SelectItem value="intermediate" className="text-white">Intermediate - Some experience</SelectItem>
-                <SelectItem value="advanced" className="text-white">Advanced - Experienced in robotics</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.experienceLevel && <p className="text-red-400 text-sm">{errors.experienceLevel}</p>}
+            <div className="space-y-2">
+              <Label className="text-white flex items-center gap-2">
+                <GraduationCap className="w-4 h-4" />
+                Batch *
+              </Label>
+              <Select value={formData.batch} onValueChange={(value) => setFormData({ ...formData, batch: value })}>
+                <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
+                  <SelectValue placeholder="Select your batch" />
+                </SelectTrigger>
+                <SelectContent className="bg-slate-800 border-slate-600">
+                  <SelectItem value="10th" className="text-white">10th</SelectItem>
+                  <SelectItem value="11th" className="text-white">11th</SelectItem>
+                  <SelectItem value="12th" className="text-white">12th</SelectItem>
+                  <SelectItem value="13th" className="text-white">13th</SelectItem>
+                  <SelectItem value="14th" className="text-white">14th</SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.batch && <p className="text-red-400 text-sm">{errors.batch}</p>}
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-white flex items-center gap-2">
+                <BookOpen className="w-4 h-4" />
+                Department *
+              </Label>
+              <Select value={formData.department} onValueChange={(value) => setFormData({ ...formData, department: value })}>
+                <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
+                  <SelectValue placeholder="Select your department" />
+                </SelectTrigger>
+                <SelectContent className="bg-slate-800 border-slate-600">
+                  <SelectItem value="TEX" className="text-white">TEX - Textile Engineering</SelectItem>
+                  <SelectItem value="IPE" className="text-white">IPE - Industrial & Production Engineering</SelectItem>
+                  <SelectItem value="CSE" className="text-white">CSE - Computer Science & Engineering</SelectItem>
+                  <SelectItem value="EEE" className="text-white">EEE - Electrical & Electronic Engineering</SelectItem>
+                  <SelectItem value="FDAE" className="text-white">FDAE - Fashion Design & Apparel Engineering</SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.department && <p className="text-red-400 text-sm">{errors.department}</p>}
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-white">Experience Level with Robotics *</Label>
+              <Select value={formData.experienceLevel} onValueChange={(value) => setFormData({ ...formData, experienceLevel: value })}>
+                <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
+                  <SelectValue placeholder="Select your experience level" />
+                </SelectTrigger>
+                <SelectContent className="bg-slate-800 border-slate-600">
+                  <SelectItem value="beginner" className="text-white">Beginner - New to robotics</SelectItem>
+                  <SelectItem value="intermediate" className="text-white">Intermediate - Some experience</SelectItem>
+                  <SelectItem value="advanced" className="text-white">Advanced - Experienced in robotics</SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.experienceLevel && <p className="text-red-400 text-sm">{errors.experienceLevel}</p>}
+            </div>
           </div>
 
           <Button 

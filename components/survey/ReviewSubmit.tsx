@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, ChevronLeft, Loader2, User, Mail, Phone, Building, Cpu, Target, Code, Calendar, MessageSquare } from 'lucide-react';
+import { CheckCircle, ChevronLeft, Loader2, User, Mail, Phone, Building, Cpu, Target, Code, Calendar, MessageSquare, GraduationCap, BookOpen, IdCard } from 'lucide-react';
 import { SurveyResponse } from '@/types/survey';
 
 interface ReviewSubmitProps {
@@ -50,6 +50,14 @@ export default function ReviewSubmit({ data, onBack, onSuccess }: ReviewSubmitPr
     advanced: 'Advanced - Experienced in robotics'
   };
 
+  const departmentLabels = {
+    TEX: 'TEX - Textile Engineering',
+    IPE: 'IPE - Industrial & Production Engineering',
+    CSE: 'CSE - Computer Science & Engineering',
+    EEE: 'EEE - Electrical & Electronic Engineering',
+    FDAE: 'FDAE - Fashion Design & Apparel Engineering'
+  };
+
   return (
     <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700 backdrop-blur-sm">
       <CardContent className="p-8">
@@ -83,9 +91,24 @@ export default function ReviewSubmit({ data, onBack, onSuccess }: ReviewSubmitPr
                   <span className="text-white font-medium">{data.phone}</span>
                 </div>
                 <div className="flex items-center gap-2">
+                  <IdCard className="w-4 h-4 text-slate-400" />
+                  <span className="text-slate-300">Student ID:</span>
+                  <span className="text-white font-medium">{data.studentId}</span>
+                </div>
+                <div className="flex items-center gap-2">
                   <Building className="w-4 h-4 text-slate-400" />
                   <span className="text-slate-300">Institution:</span>
                   <span className="text-white font-medium">{data.institution}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <GraduationCap className="w-4 h-4 text-slate-400" />
+                  <span className="text-slate-300">Batch:</span>
+                  <span className="text-white font-medium">{data.batch}</span>
+                </div>
+                <div className="flex items-center gap-2 md:col-span-2">
+                  <BookOpen className="w-4 h-4 text-slate-400" />
+                  <span className="text-slate-300">Department:</span>
+                  <span className="text-white font-medium">{departmentLabels[data.department]}</span>
                 </div>
               </div>
             </div>
