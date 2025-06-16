@@ -9,6 +9,7 @@ import ReviewSubmit from '@/components/survey/ReviewSubmit';
 import SuccessMessage from '@/components/survey/SuccessMessage';
 import ProgressBar from '@/components/survey/ProgressBar';
 import { Bot, Zap, Cpu } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -70,11 +71,24 @@ export default function Home() {
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="flex justify-center items-center gap-4 mb-6">
+          <div className="flex justify-center items-center gap-6 mb-6">
             <div className="relative">
               <Bot className="w-12 h-12 text-pink-500 pulse-neon floating-animation" />
               <div className="absolute inset-0 bg-pink-400/20 rounded-full animate-ping" />
             </div>
+            
+            {/* NCC Logo */}
+            <div className="relative">
+              <Image
+                src="/ncc.png"
+                alt="NCC Logo"
+                width={80}
+                height={80}
+                className="floating-animation neon-glow"
+                style={{ animationDelay: '0.5s' }}
+              />
+            </div>
+            
             <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
               NCC Robotics
             </h1>
