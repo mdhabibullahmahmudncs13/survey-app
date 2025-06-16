@@ -21,7 +21,7 @@ export default function SuccessMessage({ onReset }: SuccessMessageProps) {
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold text-gray-800 neon-text">Survey Submitted Successfully!</h2>
+            <h2 className="text-3xl font-bold text-gray-800">Survey Submitted Successfully!</h2>
             <p className="text-green-600 text-lg font-medium">
               Thank you for your interest in the NCC Robotics Workshop!
             </p>

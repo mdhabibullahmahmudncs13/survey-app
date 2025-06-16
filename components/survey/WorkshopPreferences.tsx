@@ -64,7 +64,7 @@ export default function WorkshopPreferences({ data, onNext, onBack }: WorkshopPr
       <CardContent className="p-8">
         <div className="space-y-6">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2 neon-text">Workshop Preferences</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Workshop Preferences</h2>
             <p className="text-gray-600">Select topics you're most interested in learning</p>
           </div>
 

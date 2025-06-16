@@ -194,7 +194,7 @@ export default function AdminPanel() {
           <div className="flex items-center gap-4">
             <Shield className="w-8 h-8 text-purple-500 neon-glow" />
             <div>
-              <h1 className="text-3xl font-bold text-gray-800 neon-text">Admin Panel</h1>
+              <h1 className="text-3xl font-bold text-gray-800">Admin Panel</h1>
               <p className="text-gray-600">NCC Robotics Workshop Submissions</p>
             </div>
           </div>

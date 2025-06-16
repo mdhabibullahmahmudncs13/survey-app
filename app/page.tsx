@@ -75,7 +75,7 @@ export default function Home() {
               <Bot className="w-12 h-12 text-pink-500 pulse-neon floating-animation" />
               <div className="absolute inset-0 bg-pink-400/20 rounded-full animate-ping" />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent neon-text">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
               NCC Robotics
             </h1>
             <div className="relative">
@@ -84,7 +84,7 @@ export default function Home() {
             </div>
           </div>
           
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4 neon-text">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
             Workshop Registration Survey
           </h2>
           

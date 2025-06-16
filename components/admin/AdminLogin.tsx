@@ -57,7 +57,7 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
                 <div className="absolute inset-0 bg-purple-400/20 rounded-full animate-ping" />
               </div>
             </div>
-            <CardTitle className="text-2xl font-bold text-gray-800 neon-text">Admin Login</CardTitle>
+            <CardTitle className="text-2xl font-bold text-gray-800">Admin Login</CardTitle>
             <p className="text-gray-600">Access the NCC Robotics admin panel</p>
           </CardHeader>
           <CardContent>

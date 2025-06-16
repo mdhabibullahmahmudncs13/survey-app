@@ -63,7 +63,7 @@ export default function ReviewSubmit({ data, onBack, onSuccess }: ReviewSubmitPr
       <CardContent className="p-8">
         <div className="space-y-6">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2 neon-text">Review Your Information</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Review Your Information</h2>
             <p className="text-gray-600">Please review your details before submitting</p>
           </div>
 
