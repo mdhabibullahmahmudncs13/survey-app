@@ -30,7 +30,7 @@ const programmingLanguages = [
 ];
 
 const availabilityOptions = [
-  '20 June 2025 (9 AM - 4 PM)',
+  '20 June 2025-Friday-(9 AM - 4 PM)',
   '21 June 2025 (9 AM - 4 PM)',
   '22 June 2025 (9 AM - 4 PM)',
   '23 June 2025 (9 AM - 4 PM)',
