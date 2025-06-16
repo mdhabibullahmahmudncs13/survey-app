@@ -56,54 +56,55 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-cyan-50 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-blue-600/10 to-transparent rounded-full animate-pulse" />
-        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-cyan-600/10 to-transparent rounded-full animate-pulse delay-1000" />
+        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-pink-200/30 to-transparent rounded-full floating-animation" />
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-cyan-200/30 to-transparent rounded-full floating-animation" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-200/20 to-blue-200/20 rounded-full floating-animation" style={{ animationDelay: '4s' }} />
       </div>
 
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,0,110,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,0,110,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
 
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex justify-center items-center gap-4 mb-6">
             <div className="relative">
-              <Bot className="w-12 h-12 text-cyan-400 animate-bounce" />
-              <div className="absolute inset-0 bg-cyan-400/20 rounded-full animate-ping" />
+              <Bot className="w-12 h-12 text-pink-500 pulse-neon floating-animation" />
+              <div className="absolute inset-0 bg-pink-400/20 rounded-full animate-ping" />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent neon-text">
               NCC Robotics
             </h1>
             <div className="relative">
-              <Zap className="w-12 h-12 text-yellow-400 animate-pulse" />
-              <div className="absolute inset-0 bg-yellow-400/20 rounded-full animate-ping delay-500" />
+              <Zap className="w-12 h-12 text-cyan-500 pulse-neon floating-animation" style={{ animationDelay: '1s' }} />
+              <div className="absolute inset-0 bg-cyan-400/20 rounded-full animate-ping" style={{ animationDelay: '500ms' }} />
             </div>
           </div>
           
-          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4 neon-text">
             Workshop Registration Survey
           </h2>
           
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
             Help us design the perfect robotics workshop tailored to your interests and skill level. 
             Your responses will shape an engaging learning experience in cutting-edge robotics technology.
           </p>
 
-          <div className="flex justify-center items-center gap-6 text-slate-400">
-            <div className="flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-blue-400" />
-              <span className="text-sm">Arduino & Sensors</span>
+          <div className="flex justify-center items-center gap-6 text-gray-600">
+            <div className="flex items-center gap-2 neon-card px-4 py-2 rounded-full">
+              <Cpu className="w-5 h-5 text-blue-500 neon-glow" />
+              <span className="text-sm font-medium">Arduino & Sensors</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Bot className="w-5 h-5 text-green-400" />
-              <span className="text-sm">AI & Robotics</span>
+            <div className="flex items-center gap-2 neon-card px-4 py-2 rounded-full">
+              <Bot className="w-5 h-5 text-green-500 neon-glow" />
+              <span className="text-sm font-medium">AI & Robotics</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-yellow-400" />
-              <span className="text-sm">Hands-on Projects</span>
+            <div className="flex items-center gap-2 neon-card px-4 py-2 rounded-full">
+              <Zap className="w-5 h-5 text-yellow-500 neon-glow" />
+              <span className="text-sm font-medium">Hands-on Projects</span>
             </div>
           </div>
         </div>
@@ -121,7 +122,7 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-12 text-slate-400 text-sm">
+        <div className="text-center mt-12 text-gray-500 text-sm">
           <p>© 2025 NCC Robotics Segment. Building the future, one robot at a time.</p>
         </div>
       </div>

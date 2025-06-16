@@ -79,62 +79,62 @@ export default function TechnicalSkills({ data, onNext, onBack }: TechnicalSkill
   };
 
   return (
-    <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700 backdrop-blur-sm">
+    <Card className="neon-card border-2 border-cyan-200/50 shadow-2xl">
       <CardContent className="p-8">
         <div className="space-y-6">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Technical Skills & Availability</h2>
-            <p className="text-slate-300">Help us understand your technical background</p>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2 neon-text">Technical Skills & Availability</h2>
+            <p className="text-gray-600">Help us understand your technical background</p>
           </div>
 
           <div className="space-y-4">
-            <Label className="text-white text-lg flex items-center gap-2">
-              <Code className="w-5 h-5" />
+            <Label className="text-gray-800 text-lg flex items-center gap-2 font-semibold">
+              <Code className="w-5 h-5 text-cyan-500 neon-glow" />
               Programming Languages/Platforms *
             </Label>
             <div className="grid md:grid-cols-2 gap-3">
               {programmingLanguages.map((language) => (
-                <div key={language} className="flex items-center space-x-3 p-3 rounded-lg bg-slate-800/30 border border-slate-700 hover:bg-slate-800/50 transition-colors">
+                <div key={language} className="flex items-center space-x-3 p-3 rounded-lg neon-bg border border-cyan-200/50 hover:border-cyan-300/70 transition-all duration-300 hover:shadow-lg">
                   <Checkbox
                     id={language}
                     checked={selectedLanguages.includes(language)}
                     onCheckedChange={(checked) => handleLanguageChange(language, checked as boolean)}
-                    className="border-slate-500"
+                    className="border-cyan-400 data-[state=checked]:bg-cyan-500 data-[state=checked]:border-cyan-500"
                   />
-                  <Label htmlFor={language} className="text-white cursor-pointer text-sm">
+                  <Label htmlFor={language} className="text-gray-800 cursor-pointer text-sm font-medium">
                     {language}
                   </Label>
                 </div>
               ))}
             </div>
-            {errors.languages && <p className="text-red-400 text-sm">{errors.languages}</p>}
+            {errors.languages && <p className="text-red-500 text-sm">{errors.languages}</p>}
           </div>
 
           <div className="space-y-2">
-            <Label className="text-white flex items-center gap-2">
-              <Calendar className="w-5 h-5" />
+            <Label className="text-gray-800 flex items-center gap-2 font-medium">
+              <Calendar className="w-5 h-5 text-pink-500 neon-glow" />
               Preferred Workshop Date *
             </Label>
-            <p className="text-slate-300 text-sm mb-3">
+            <p className="text-gray-600 text-sm mb-3">
               Workshop runs from 20 June 2025 to 30 June 2025 (9 AM - 4 PM daily). Select your preferred date:
             </p>
             <Select value={availability} onValueChange={setAvailability}>
-              <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
+              <SelectTrigger className="neon-input text-gray-800">
                 <SelectValue placeholder="Select your preferred workshop date" />
               </SelectTrigger>
-              <SelectContent className="bg-slate-800 border-slate-600">
+              <SelectContent className="bg-white/95 backdrop-blur-md border-pink-200">
                 {availabilityOptions.map((option) => (
-                  <SelectItem key={option} value={option} className="text-white">
+                  <SelectItem key={option} value={option} className="text-gray-800">
                     {option}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            {errors.availability && <p className="text-red-400 text-sm">{errors.availability}</p>}
+            {errors.availability && <p className="text-red-500 text-sm">{errors.availability}</p>}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="comments" className="text-white">
+            <Label htmlFor="comments" className="text-gray-800 font-medium">
               Additional Comments or Questions (Optional)
             </Label>
             <Textarea
@@ -142,7 +142,7 @@ export default function TechnicalSkills({ data, onNext, onBack }: TechnicalSkill
               value={additionalComments}
               onChange={(e) => setAdditionalComments(e.target.value)}
               placeholder="Any specific questions, accessibility needs, or additional information you'd like to share..."
-              className="bg-slate-800/50 border-slate-600 text-white min-h-[100px]"
+              className="neon-input text-gray-800 placeholder-gray-500 min-h-[100px]"
             />
           </div>
 
@@ -150,14 +150,14 @@ export default function TechnicalSkills({ data, onNext, onBack }: TechnicalSkill
             <Button 
               onClick={onBack}
               variant="outline"
-              className="flex-1 border-slate-600 text-white hover:bg-slate-800"
+              className="flex-1 border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300"
             >
               <ChevronLeft className="w-4 h-4 mr-2" />
               Back
             </Button>
             <Button 
               onClick={validateAndNext}
-              className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white"
+              className="flex-1 neon-button text-white font-semibold transition-all duration-300"
             >
               Review & Submit
             </Button>

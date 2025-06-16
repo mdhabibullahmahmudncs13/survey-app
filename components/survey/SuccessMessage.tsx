@@ -10,55 +10,55 @@ interface SuccessMessageProps {
 
 export default function SuccessMessage({ onReset }: SuccessMessageProps) {
   return (
-    <Card className="bg-gradient-to-br from-green-900/50 to-emerald-800/50 border-green-700 backdrop-blur-sm">
+    <Card className="neon-card border-2 border-green-200/50 shadow-2xl">
       <CardContent className="p-8 text-center">
         <div className="space-y-6">
           <div className="flex justify-center">
             <div className="relative">
-              <CheckCircle className="w-20 h-20 text-green-400 animate-pulse" />
+              <CheckCircle className="w-20 h-20 text-green-500 pulse-neon" />
               <div className="absolute inset-0 rounded-full bg-green-400/20 animate-ping" />
             </div>
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold text-white">Survey Submitted Successfully!</h2>
-            <p className="text-green-100 text-lg">
+            <h2 className="text-3xl font-bold text-gray-800 neon-text">Survey Submitted Successfully!</h2>
+            <p className="text-green-600 text-lg font-medium">
               Thank you for your interest in the NCC Robotics Workshop!
             </p>
           </div>
 
-          <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
-            <h3 className="text-xl font-semibold text-white mb-4 flex items-center justify-center gap-2">
-              <Bot className="w-6 h-6 text-cyan-400" />
+          <div className="neon-bg rounded-lg p-6 border border-gray-200/50">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center justify-center gap-2">
+              <Bot className="w-6 h-6 text-purple-500 neon-glow" />
               What Happens Next?
             </h3>
             <div className="space-y-4 text-left">
               <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-cyan-400 mt-1" />
+                <Calendar className="w-5 h-5 text-pink-500 neon-glow mt-1" />
                 <div>
-                  <p className="text-white font-medium">Workshop Scheduling</p>
-                  <p className="text-slate-300 text-sm">We'll review your preferences and schedule the workshop accordingly.</p>
+                  <p className="text-gray-800 font-medium">Workshop Scheduling</p>
+                  <p className="text-gray-600 text-sm">We'll review your preferences and schedule the workshop accordingly.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-cyan-400 mt-1" />
+                <Mail className="w-5 h-5 text-cyan-500 neon-glow mt-1" />
                 <div>
-                  <p className="text-white font-medium">Email Confirmation</p>
-                  <p className="text-slate-300 text-sm">You'll receive a confirmation email with workshop details within 2-3 business days.</p>
+                  <p className="text-gray-800 font-medium">Email Confirmation</p>
+                  <p className="text-gray-600 text-sm">You'll receive a confirmation email with workshop details within 2-3 business days.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Bot className="w-5 h-5 text-cyan-400 mt-1" />
+                <Bot className="w-5 h-5 text-purple-500 neon-glow mt-1" />
                 <div>
-                  <p className="text-white font-medium">Preparation Materials</p>
-                  <p className="text-slate-300 text-sm">Pre-workshop materials and setup instructions will be shared via email.</p>
+                  <p className="text-gray-800 font-medium">Preparation Materials</p>
+                  <p className="text-gray-600 text-sm">Pre-workshop materials and setup instructions will be shared via email.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-lg p-4 border border-blue-600/30">
-            <p className="text-blue-100 text-sm">
+          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-4 border border-blue-200/50">
+            <p className="text-blue-700 text-sm">
               <strong>Questions?</strong> Contact us at robotics@ncc.edu or call (555) 123-4567
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function SuccessMessage({ onReset }: SuccessMessageProps) {
           <Button 
             onClick={onReset}
             variant="outline"
-            className="border-green-600 text-green-300 hover:bg-green-600/20"
+            className="border-2 border-green-400 text-green-600 hover:bg-green-50 hover:border-green-500 transition-all duration-300"
           >
             Submit Another Response
           </Button>

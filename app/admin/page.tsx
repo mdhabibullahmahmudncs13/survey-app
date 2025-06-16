@@ -181,27 +181,27 @@ export default function AdminPanel() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-blue-600/10 to-transparent rounded-full animate-pulse" />
-        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-cyan-600/10 to-transparent rounded-full animate-pulse delay-1000" />
+        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-blue-200/20 to-transparent rounded-full floating-animation" />
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-purple-200/20 to-transparent rounded-full floating-animation" style={{ animationDelay: '2s' }} />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-4">
-            <Shield className="w-8 h-8 text-cyan-400" />
+            <Shield className="w-8 h-8 text-purple-500 neon-glow" />
             <div>
-              <h1 className="text-3xl font-bold text-white">Admin Panel</h1>
-              <p className="text-slate-300">NCC Robotics Workshop Submissions</p>
+              <h1 className="text-3xl font-bold text-gray-800 neon-text">Admin Panel</h1>
+              <p className="text-gray-600">NCC Robotics Workshop Submissions</p>
             </div>
           </div>
           <Button 
             onClick={handleLogout}
             variant="outline"
-            className="border-red-600 text-red-300 hover:bg-red-600/20"
+            className="border-2 border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 transition-all duration-300"
           >
             <LogOut className="w-4 h-4 mr-2" />
             Logout
@@ -210,25 +210,25 @@ export default function AdminPanel() {
 
         {/* Stats Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700">
+          <Card className="neon-card border-2 border-blue-200/50">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <Users className="w-8 h-8 text-cyan-400" />
+                <Users className="w-8 h-8 text-blue-500 neon-glow" />
                 <div>
-                  <p className="text-slate-300 text-sm">Total Submissions</p>
-                  <p className="text-2xl font-bold text-white">{submissions.length}</p>
+                  <p className="text-gray-600 text-sm">Total Submissions</p>
+                  <p className="text-2xl font-bold text-gray-800">{submissions.length}</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700">
+          <Card className="neon-card border-2 border-green-200/50">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <Calendar className="w-8 h-8 text-green-400" />
+                <Calendar className="w-8 h-8 text-green-500 neon-glow" />
                 <div>
-                  <p className="text-slate-300 text-sm">Today's Submissions</p>
-                  <p className="text-2xl font-bold text-white">
+                  <p className="text-gray-600 text-sm">Today's Submissions</p>
+                  <p className="text-2xl font-bold text-gray-800">
                     {submissions.filter(sub => 
                       new Date(sub.submitted_at).toDateString() === new Date().toDateString()
                     ).length}
@@ -238,13 +238,13 @@ export default function AdminPanel() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700">
+          <Card className="neon-card border-2 border-yellow-200/50">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <Filter className="w-8 h-8 text-yellow-400" />
+                <Filter className="w-8 h-8 text-yellow-500 neon-glow" />
                 <div>
-                  <p className="text-slate-300 text-sm">Filtered Results</p>
-                  <p className="text-2xl font-bold text-white">{filteredSubmissions.length}</p>
+                  <p className="text-gray-600 text-sm">Filtered Results</p>
+                  <p className="text-2xl font-bold text-gray-800">{filteredSubmissions.length}</p>
                 </div>
               </div>
             </CardContent>
@@ -252,21 +252,21 @@ export default function AdminPanel() {
         </div>
 
         {/* Controls */}
-        <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700 mb-6">
+        <Card className="neon-card border-2 border-purple-200/50 mb-6">
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
               <div className="flex items-center gap-4 flex-1">
-                <Search className="w-5 h-5 text-slate-400" />
+                <Search className="w-5 h-5 text-gray-500" />
                 <Input
                   placeholder="Search by name, email, student ID, or department..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-slate-800/50 border-slate-600 text-white flex-1"
+                  className="neon-input text-gray-800 placeholder-gray-500 flex-1"
                 />
               </div>
               <Button 
                 onClick={handleExportCSV}
-                className="bg-green-600 hover:bg-green-700 text-white"
+                className="neon-button text-white font-semibold"
               >
                 <Download className="w-4 h-4 mr-2" />
                 Export CSV
@@ -276,40 +276,40 @@ export default function AdminPanel() {
         </Card>
 
         {/* Submissions Table */}
-        <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700">
+        <Card className="neon-card border-2 border-cyan-200/50">
           <CardHeader>
-            <CardTitle className="text-white">Survey Submissions</CardTitle>
+            <CardTitle className="text-gray-800">Survey Submissions</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-slate-700">
-                    <TableHead className="text-slate-300">Name</TableHead>
-                    <TableHead className="text-slate-300">Student ID</TableHead>
-                    <TableHead className="text-slate-300">Department</TableHead>
-                    <TableHead className="text-slate-300">Batch</TableHead>
-                    <TableHead className="text-slate-300">Experience</TableHead>
-                    <TableHead className="text-slate-300">Preferred Date</TableHead>
-                    <TableHead className="text-slate-300">Submitted</TableHead>
-                    <TableHead className="text-slate-300">Actions</TableHead>
+                  <TableRow className="border-gray-200">
+                    <TableHead className="text-gray-600 font-semibold">Name</TableHead>
+                    <TableHead className="text-gray-600 font-semibold">Student ID</TableHead>
+                    <TableHead className="text-gray-600 font-semibold">Department</TableHead>
+                    <TableHead className="text-gray-600 font-semibold">Batch</TableHead>
+                    <TableHead className="text-gray-600 font-semibold">Experience</TableHead>
+                    <TableHead className="text-gray-600 font-semibold">Preferred Date</TableHead>
+                    <TableHead className="text-gray-600 font-semibold">Submitted</TableHead>
+                    <TableHead className="text-gray-600 font-semibold">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {filteredSubmissions.map((submission) => (
-                    <TableRow key={submission.id} className="border-slate-700">
-                      <TableCell className="text-white font-medium">
+                    <TableRow key={submission.id} className="border-gray-200 hover:bg-gray-50/50 transition-colors">
+                      <TableCell className="text-gray-800 font-medium">
                         {submission.name}
                       </TableCell>
-                      <TableCell className="text-slate-300">
+                      <TableCell className="text-gray-600">
                         {submission.studentId}
                       </TableCell>
                       <TableCell>
-                        <Badge variant="outline" className="border-blue-600 text-blue-300">
+                        <Badge variant="outline" className="border-blue-400 text-blue-700 bg-blue-50">
                           {departmentLabels[submission.department]}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-slate-300">
+                      <TableCell className="text-gray-600">
                         {submission.batch}
                       </TableCell>
                       <TableCell>
@@ -317,93 +317,93 @@ export default function AdminPanel() {
                           variant="outline" 
                           className={
                             submission.experienceLevel === 'beginner' 
-                              ? 'border-green-600 text-green-300'
+                              ? 'border-green-400 text-green-700 bg-green-50'
                               : submission.experienceLevel === 'intermediate'
-                              ? 'border-yellow-600 text-yellow-300'
-                              : 'border-red-600 text-red-300'
+                              ? 'border-yellow-400 text-yellow-700 bg-yellow-50'
+                              : 'border-red-400 text-red-700 bg-red-50'
                           }
                         >
                           {submission.experienceLevel}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-slate-300">
+                      <TableCell className="text-gray-600">
                         {submission.availability}
                       </TableCell>
-                      <TableCell className="text-slate-300">
+                      <TableCell className="text-gray-600">
                         {new Date(submission.submitted_at).toLocaleDateString()}
                       </TableCell>
                       <TableCell>
                         <div className="flex gap-2">
                           <Dialog>
                             <DialogTrigger asChild>
-                              <Button size="sm" variant="outline" className="border-slate-600 text-slate-300">
+                              <Button size="sm" variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
                                 <Eye className="w-4 h-4" />
                               </Button>
                             </DialogTrigger>
-                            <DialogContent className="bg-slate-900 border-slate-700 text-white max-w-2xl max-h-[80vh] overflow-y-auto">
+                            <DialogContent className="bg-white/95 backdrop-blur-md border-gray-200 text-gray-800 max-w-2xl max-h-[80vh] overflow-y-auto">
                               <DialogHeader>
                                 <DialogTitle>Submission Details</DialogTitle>
                               </DialogHeader>
                               <div className="space-y-4">
                                 <div className="grid md:grid-cols-2 gap-4">
                                   <div>
-                                    <Label className="text-slate-300">Name</Label>
-                                    <p className="text-white">{submission.name}</p>
+                                    <Label className="text-gray-600">Name</Label>
+                                    <p className="text-gray-800 font-medium">{submission.name}</p>
                                   </div>
                                   <div>
-                                    <Label className="text-slate-300">Email</Label>
-                                    <p className="text-white">{submission.email}</p>
+                                    <Label className="text-gray-600">Email</Label>
+                                    <p className="text-gray-800 font-medium">{submission.email}</p>
                                   </div>
                                   <div>
-                                    <Label className="text-slate-300">Phone</Label>
-                                    <p className="text-white">{submission.phone}</p>
+                                    <Label className="text-gray-600">Phone</Label>
+                                    <p className="text-gray-800 font-medium">{submission.phone}</p>
                                   </div>
                                   <div>
-                                    <Label className="text-slate-300">Student ID</Label>
-                                    <p className="text-white">{submission.studentId}</p>
+                                    <Label className="text-gray-600">Student ID</Label>
+                                    <p className="text-gray-800 font-medium">{submission.studentId}</p>
                                   </div>
                                   <div>
-                                    <Label className="text-slate-300">Batch</Label>
-                                    <p className="text-white">{submission.batch}</p>
+                                    <Label className="text-gray-600">Batch</Label>
+                                    <p className="text-gray-800 font-medium">{submission.batch}</p>
                                   </div>
                                   <div>
-                                    <Label className="text-slate-300">Department</Label>
-                                    <p className="text-white">{departmentLabels[submission.department]}</p>
+                                    <Label className="text-gray-600">Department</Label>
+                                    <p className="text-gray-800 font-medium">{departmentLabels[submission.department]}</p>
                                   </div>
                                 </div>
-                                <Separator className="bg-slate-700" />
+                                <Separator className="bg-gray-200" />
                                 <div>
-                                  <Label className="text-slate-300">Workshop Topics</Label>
+                                  <Label className="text-gray-600">Workshop Topics</Label>
                                   <div className="flex flex-wrap gap-2 mt-2">
                                     {submission.workshopTopics.map(topic => (
-                                      <Badge key={topic} variant="outline" className="border-green-600 text-green-300">
+                                      <Badge key={topic} variant="outline" className="border-green-400 text-green-700 bg-green-50">
                                         {topic.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
                                       </Badge>
                                     ))}
                                   </div>
                                 </div>
                                 <div>
-                                  <Label className="text-slate-300">Programming Languages</Label>
+                                  <Label className="text-gray-600">Programming Languages</Label>
                                   <div className="flex flex-wrap gap-2 mt-2">
                                     {submission.programmingLanguages.map(lang => (
-                                      <Badge key={lang} variant="outline" className="border-blue-600 text-blue-300">
+                                      <Badge key={lang} variant="outline" className="border-blue-400 text-blue-700 bg-blue-50">
                                         {lang}
                                       </Badge>
                                     ))}
                                   </div>
                                 </div>
                                 <div>
-                                  <Label className="text-slate-300">Preferred Workshop Date</Label>
-                                  <p className="text-white">{submission.availability}</p>
+                                  <Label className="text-gray-600">Preferred Workshop Date</Label>
+                                  <p className="text-gray-800 font-medium">{submission.availability}</p>
                                 </div>
                                 <div>
-                                  <Label className="text-slate-300">Expectations</Label>
-                                  <p className="text-white">{submission.expectations}</p>
+                                  <Label className="text-gray-600">Expectations</Label>
+                                  <p className="text-gray-800">{submission.expectations}</p>
                                 </div>
                                 {submission.additionalComments && (
                                   <div>
-                                    <Label className="text-slate-300">Additional Comments</Label>
-                                    <p className="text-white">{submission.additionalComments}</p>
+                                    <Label className="text-gray-600">Additional Comments</Label>
+                                    <p className="text-gray-800">{submission.additionalComments}</p>
                                   </div>
                                 )}
                               </div>
@@ -413,7 +413,7 @@ export default function AdminPanel() {
                           <Button 
                             size="sm" 
                             variant="outline" 
-                            className="border-yellow-600 text-yellow-300"
+                            className="border-yellow-300 text-yellow-600 hover:bg-yellow-50"
                             onClick={() => handleEdit(submission)}
                           >
                             <Edit className="w-4 h-4" />
@@ -421,22 +421,22 @@ export default function AdminPanel() {
 
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
-                              <Button size="sm" variant="outline" className="border-red-600 text-red-300">
+                              <Button size="sm" variant="outline" className="border-red-300 text-red-600 hover:bg-red-50">
                                 <Trash2 className="w-4 h-4" />
                               </Button>
                             </AlertDialogTrigger>
-                            <AlertDialogContent className="bg-slate-900 border-slate-700">
+                            <AlertDialogContent className="bg-white/95 backdrop-blur-md border-gray-200">
                               <AlertDialogHeader>
-                                <AlertDialogTitle className="text-white">Delete Submission</AlertDialogTitle>
-                                <AlertDialogDescription className="text-slate-300">
+                                <AlertDialogTitle className="text-gray-800">Delete Submission</AlertDialogTitle>
+                                <AlertDialogDescription className="text-gray-600">
                                   Are you sure you want to delete {submission.name}'s submission? This action cannot be undone.
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
                               <AlertDialogFooter>
-                                <AlertDialogCancel className="border-slate-600 text-slate-300">Cancel</AlertDialogCancel>
+                                <AlertDialogCancel className="border-gray-300 text-gray-600">Cancel</AlertDialogCancel>
                                 <AlertDialogAction 
                                   onClick={() => handleDelete(submission.id)}
-                                  className="bg-red-600 hover:bg-red-700"
+                                  className="bg-red-500 hover:bg-red-600 text-white"
                                 >
                                   Delete
                                 </AlertDialogAction>

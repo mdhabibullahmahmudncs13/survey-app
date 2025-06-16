@@ -80,3 +80,96 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Neon Effects */
+.neon-glow {
+  filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor);
+}
+
+.neon-border {
+  border: 2px solid;
+  box-shadow: 
+    0 0 10px currentColor,
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.neon-text {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor;
+}
+
+.neon-bg {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.neon-button {
+  background: linear-gradient(135deg, #ff006e, #8338ec, #3a86ff);
+  box-shadow: 
+    0 0 20px rgba(255, 0, 110, 0.3),
+    0 0 40px rgba(131, 56, 236, 0.2),
+    0 0 60px rgba(58, 134, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.neon-button:hover {
+  box-shadow: 
+    0 0 30px rgba(255, 0, 110, 0.5),
+    0 0 60px rgba(131, 56, 236, 0.3),
+    0 0 90px rgba(58, 134, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.neon-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.neon-input {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 
+    0 0 0 2px rgba(255, 0, 110, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.neon-input:focus {
+  box-shadow: 
+    0 0 0 2px rgba(255, 0, 110, 0.5),
+    0 0 20px rgba(255, 0, 110, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.floating-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-neon {
+  from {
+    filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor);
+  }
+  to {
+    filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor) drop-shadow(0 0 30px currentColor);
+  }
+}

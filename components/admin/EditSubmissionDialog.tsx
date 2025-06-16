@@ -117,7 +117,7 @@ export default function EditSubmissionDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-slate-900 border-slate-700 text-white max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="bg-white/95 backdrop-blur-md border-gray-200 text-gray-800 max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             Edit Submission
@@ -125,7 +125,7 @@ export default function EditSubmissionDialog({
               variant="ghost"
               size="sm"
               onClick={onClose}
-              className="text-slate-400 hover:text-white"
+              className="text-gray-500 hover:text-gray-700"
             >
               <X className="w-4 h-4" />
             </Button>
@@ -135,184 +135,184 @@ export default function EditSubmissionDialog({
         <div className="space-y-6">
           {/* Personal Information */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Personal Information</h3>
+            <h3 className="text-lg font-semibold text-gray-800">Personal Information</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="edit-name" className="text-white">Full Name *</Label>
+                <Label htmlFor="edit-name" className="text-gray-800 font-medium">Full Name *</Label>
                 <Input
                   id="edit-name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-slate-800/50 border-slate-600 text-white"
+                  className="neon-input text-gray-800"
                 />
-                {errors.name && <p className="text-red-400 text-sm">{errors.name}</p>}
+                {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="edit-email" className="text-white">Email Address *</Label>
+                <Label htmlFor="edit-email" className="text-gray-800 font-medium">Email Address *</Label>
                 <Input
                   id="edit-email"
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-slate-800/50 border-slate-600 text-white"
+                  className="neon-input text-gray-800"
                 />
-                {errors.email && <p className="text-red-400 text-sm">{errors.email}</p>}
+                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="edit-phone" className="text-white">Phone Number *</Label>
+                <Label htmlFor="edit-phone" className="text-gray-800 font-medium">Phone Number *</Label>
                 <Input
                   id="edit-phone"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="bg-slate-800/50 border-slate-600 text-white"
+                  className="neon-input text-gray-800"
                 />
-                {errors.phone && <p className="text-red-400 text-sm">{errors.phone}</p>}
+                {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="edit-studentId" className="text-white">Student ID *</Label>
+                <Label htmlFor="edit-studentId" className="text-gray-800 font-medium">Student ID *</Label>
                 <Input
                   id="edit-studentId"
                   value={formData.studentId}
                   onChange={(e) => setFormData({ ...formData, studentId: e.target.value })}
-                  className="bg-slate-800/50 border-slate-600 text-white"
+                  className="neon-input text-gray-800"
                 />
-                {errors.studentId && <p className="text-red-400 text-sm">{errors.studentId}</p>}
+                {errors.studentId && <p className="text-red-500 text-sm">{errors.studentId}</p>}
               </div>
 
               <div className="space-y-2">
-                <Label className="text-white">Batch *</Label>
+                <Label className="text-gray-800 font-medium">Batch *</Label>
                 <Select value={formData.batch} onValueChange={(value) => setFormData({ ...formData, batch: value as any })}>
-                  <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
+                  <SelectTrigger className="neon-input text-gray-800">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-slate-800 border-slate-600">
-                    <SelectItem value="10th" className="text-white">10th</SelectItem>
-                    <SelectItem value="11th" className="text-white">11th</SelectItem>
-                    <SelectItem value="12th" className="text-white">12th</SelectItem>
-                    <SelectItem value="13th" className="text-white">13th</SelectItem>
-                    <SelectItem value="14th" className="text-white">14th</SelectItem>
+                  <SelectContent className="bg-white/95 backdrop-blur-md border-gray-200">
+                    <SelectItem value="10th" className="text-gray-800">10th</SelectItem>
+                    <SelectItem value="11th" className="text-gray-800">11th</SelectItem>
+                    <SelectItem value="12th" className="text-gray-800">12th</SelectItem>
+                    <SelectItem value="13th" className="text-gray-800">13th</SelectItem>
+                    <SelectItem value="14th" className="text-gray-800">14th</SelectItem>
                   </SelectContent>
                 </Select>
-                {errors.batch && <p className="text-red-400 text-sm">{errors.batch}</p>}
+                {errors.batch && <p className="text-red-500 text-sm">{errors.batch}</p>}
               </div>
 
               <div className="space-y-2">
-                <Label className="text-white">Department *</Label>
+                <Label className="text-gray-800 font-medium">Department *</Label>
                 <Select value={formData.department} onValueChange={(value) => setFormData({ ...formData, department: value as any })}>
-                  <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
+                  <SelectTrigger className="neon-input text-gray-800">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-slate-800 border-slate-600">
-                    <SelectItem value="TEX" className="text-white">TEX - Textile Engineering</SelectItem>
-                    <SelectItem value="IPE" className="text-white">IPE - Industrial & Production Engineering</SelectItem>
-                    <SelectItem value="CSE" className="text-white">CSE - Computer Science & Engineering</SelectItem>
-                    <SelectItem value="EEE" className="text-white">EEE - Electrical & Electronic Engineering</SelectItem>
-                    <SelectItem value="FDAE" className="text-white">FDAE - Fashion Design & Apparel Engineering</SelectItem>
+                  <SelectContent className="bg-white/95 backdrop-blur-md border-gray-200">
+                    <SelectItem value="TEX" className="text-gray-800">TEX - Textile Engineering</SelectItem>
+                    <SelectItem value="IPE" className="text-gray-800">IPE - Industrial & Production Engineering</SelectItem>
+                    <SelectItem value="CSE" className="text-gray-800">CSE - Computer Science & Engineering</SelectItem>
+                    <SelectItem value="EEE" className="text-gray-800">EEE - Electrical & Electronic Engineering</SelectItem>
+                    <SelectItem value="FDAE" className="text-gray-800">FDAE - Fashion Design & Apparel Engineering</SelectItem>
                   </SelectContent>
                 </Select>
-                {errors.department && <p className="text-red-400 text-sm">{errors.department}</p>}
+                {errors.department && <p className="text-red-500 text-sm">{errors.department}</p>}
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label className="text-white">Experience Level *</Label>
+              <Label className="text-gray-800 font-medium">Experience Level *</Label>
               <Select value={formData.experienceLevel} onValueChange={(value) => setFormData({ ...formData, experienceLevel: value as any })}>
-                <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
+                <SelectTrigger className="neon-input text-gray-800">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-slate-800 border-slate-600">
-                  <SelectItem value="beginner" className="text-white">Beginner - New to robotics</SelectItem>
-                  <SelectItem value="intermediate" className="text-white">Intermediate - Some experience</SelectItem>
-                  <SelectItem value="advanced" className="text-white">Advanced - Experienced in robotics</SelectItem>
+                <SelectContent className="bg-white/95 backdrop-blur-md border-gray-200">
+                  <SelectItem value="beginner" className="text-gray-800">Beginner - New to robotics</SelectItem>
+                  <SelectItem value="intermediate" className="text-gray-800">Intermediate - Some experience</SelectItem>
+                  <SelectItem value="advanced" className="text-gray-800">Advanced - Experienced in robotics</SelectItem>
                 </SelectContent>
               </Select>
-              {errors.experienceLevel && <p className="text-red-400 text-sm">{errors.experienceLevel}</p>}
+              {errors.experienceLevel && <p className="text-red-500 text-sm">{errors.experienceLevel}</p>}
             </div>
           </div>
 
           {/* Workshop Topics */}
           <div className="space-y-4">
-            <Label className="text-white text-lg">Workshop Topics *</Label>
+            <Label className="text-gray-800 text-lg font-semibold">Workshop Topics *</Label>
             <div className="grid md:grid-cols-2 gap-3">
               {workshopTopics.map((topic) => (
-                <div key={topic.id} className="flex items-center space-x-3 p-3 rounded-lg bg-slate-800/30 border border-slate-700">
+                <div key={topic.id} className="flex items-center space-x-3 p-3 rounded-lg neon-bg border border-purple-200/50">
                   <Checkbox
                     id={`edit-${topic.id}`}
                     checked={formData.workshopTopics.includes(topic.id)}
                     onCheckedChange={(checked) => handleTopicChange(topic.id, checked as boolean)}
-                    className="border-slate-500"
+                    className="border-purple-400 data-[state=checked]:bg-purple-500"
                   />
-                  <Label htmlFor={`edit-${topic.id}`} className="text-white cursor-pointer text-sm">
+                  <Label htmlFor={`edit-${topic.id}`} className="text-gray-800 cursor-pointer text-sm font-medium">
                     {topic.label}
                   </Label>
                 </div>
               ))}
             </div>
-            {errors.topics && <p className="text-red-400 text-sm">{errors.topics}</p>}
+            {errors.topics && <p className="text-red-500 text-sm">{errors.topics}</p>}
           </div>
 
           {/* Programming Languages */}
           <div className="space-y-4">
-            <Label className="text-white text-lg">Programming Languages *</Label>
+            <Label className="text-gray-800 text-lg font-semibold">Programming Languages *</Label>
             <div className="grid md:grid-cols-2 gap-3">
               {programmingLanguages.map((language) => (
-                <div key={language} className="flex items-center space-x-3 p-3 rounded-lg bg-slate-800/30 border border-slate-700">
+                <div key={language} className="flex items-center space-x-3 p-3 rounded-lg neon-bg border border-cyan-200/50">
                   <Checkbox
                     id={`edit-lang-${language}`}
                     checked={formData.programmingLanguages.includes(language)}
                     onCheckedChange={(checked) => handleLanguageChange(language, checked as boolean)}
-                    className="border-slate-500"
+                    className="border-cyan-400 data-[state=checked]:bg-cyan-500"
                   />
-                  <Label htmlFor={`edit-lang-${language}`} className="text-white cursor-pointer text-sm">
+                  <Label htmlFor={`edit-lang-${language}`} className="text-gray-800 cursor-pointer text-sm font-medium">
                     {language}
                   </Label>
                 </div>
               ))}
             </div>
-            {errors.languages && <p className="text-red-400 text-sm">{errors.languages}</p>}
+            {errors.languages && <p className="text-red-500 text-sm">{errors.languages}</p>}
           </div>
 
           {/* Availability */}
           <div className="space-y-2">
-            <Label className="text-white">Preferred Workshop Date *</Label>
+            <Label className="text-gray-800 font-medium">Preferred Workshop Date *</Label>
             <Select value={formData.availability} onValueChange={(value) => setFormData({ ...formData, availability: value })}>
-              <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
+              <SelectTrigger className="neon-input text-gray-800">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-slate-800 border-slate-600">
+              <SelectContent className="bg-white/95 backdrop-blur-md border-gray-200">
                 {availabilityOptions.map((option) => (
-                  <SelectItem key={option} value={option} className="text-white">
+                  <SelectItem key={option} value={option} className="text-gray-800">
                     {option}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            {errors.availability && <p className="text-red-400 text-sm">{errors.availability}</p>}
+            {errors.availability && <p className="text-red-500 text-sm">{errors.availability}</p>}
           </div>
 
           {/* Expectations */}
           <div className="space-y-2">
-            <Label htmlFor="edit-expectations" className="text-white">Expectations *</Label>
+            <Label htmlFor="edit-expectations" className="text-gray-800 font-medium">Expectations *</Label>
             <Textarea
               id="edit-expectations"
               value={formData.expectations}
               onChange={(e) => setFormData({ ...formData, expectations: e.target.value })}
-              className="bg-slate-800/50 border-slate-600 text-white min-h-[100px]"
+              className="neon-input text-gray-800 min-h-[100px]"
             />
-            {errors.expectations && <p className="text-red-400 text-sm">{errors.expectations}</p>}
+            {errors.expectations && <p className="text-red-500 text-sm">{errors.expectations}</p>}
           </div>
 
           {/* Additional Comments */}
           <div className="space-y-2">
-            <Label htmlFor="edit-comments" className="text-white">Additional Comments</Label>
+            <Label htmlFor="edit-comments" className="text-gray-800 font-medium">Additional Comments</Label>
             <Textarea
               id="edit-comments"
               value={formData.additionalComments || ''}
               onChange={(e) => setFormData({ ...formData, additionalComments: e.target.value })}
-              className="bg-slate-800/50 border-slate-600 text-white min-h-[80px]"
+              className="neon-input text-gray-800 min-h-[80px]"
             />
           </div>
 
@@ -321,13 +321,13 @@ export default function EditSubmissionDialog({
             <Button 
               onClick={onClose}
               variant="outline"
-              className="flex-1 border-slate-600 text-white hover:bg-slate-800"
+              className="flex-1 border-2 border-gray-300 text-gray-700 hover:bg-gray-50"
             >
               Cancel
             </Button>
             <Button 
               onClick={validateAndSave}
-              className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white"
+              className="flex-1 neon-button text-white font-semibold"
             >
               <Save className="w-4 h-4 mr-2" />
               Save Changes

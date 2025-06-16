@@ -60,40 +60,40 @@ export default function WorkshopPreferences({ data, onNext, onBack }: WorkshopPr
   };
 
   return (
-    <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700 backdrop-blur-sm">
+    <Card className="neon-card border-2 border-purple-200/50 shadow-2xl">
       <CardContent className="p-8">
         <div className="space-y-6">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Workshop Preferences</h2>
-            <p className="text-slate-300">Select topics you're most interested in learning</p>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2 neon-text">Workshop Preferences</h2>
+            <p className="text-gray-600">Select topics you're most interested in learning</p>
           </div>
 
           <div className="space-y-4">
-            <Label className="text-white text-lg">Topics of Interest *</Label>
+            <Label className="text-gray-800 text-lg font-semibold">Topics of Interest *</Label>
             <div className="grid md:grid-cols-2 gap-4">
               {workshopTopics.map((topic) => {
                 const IconComponent = topic.icon;
                 return (
-                  <div key={topic.id} className="flex items-center space-x-3 p-4 rounded-lg bg-slate-800/30 border border-slate-700 hover:bg-slate-800/50 transition-colors">
+                  <div key={topic.id} className="flex items-center space-x-3 p-4 rounded-lg neon-bg border border-purple-200/50 hover:border-purple-300/70 transition-all duration-300 hover:shadow-lg">
                     <Checkbox
                       id={topic.id}
                       checked={selectedTopics.includes(topic.id)}
                       onCheckedChange={(checked) => handleTopicChange(topic.id, checked as boolean)}
-                      className="border-slate-500"
+                      className="border-purple-400 data-[state=checked]:bg-purple-500 data-[state=checked]:border-purple-500"
                     />
-                    <IconComponent className="w-5 h-5 text-cyan-400" />
-                    <Label htmlFor={topic.id} className="text-white cursor-pointer text-sm">
+                    <IconComponent className="w-5 h-5 text-purple-500 neon-glow" />
+                    <Label htmlFor={topic.id} className="text-gray-800 cursor-pointer text-sm font-medium">
                       {topic.label}
                     </Label>
                   </div>
                 );
               })}
             </div>
-            {errors.topics && <p className="text-red-400 text-sm">{errors.topics}</p>}
+            {errors.topics && <p className="text-red-500 text-sm">{errors.topics}</p>}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="expectations" className="text-white">
+            <Label htmlFor="expectations" className="text-gray-800 font-medium">
               What do you hope to learn from this workshop? *
             </Label>
             <Textarea
@@ -101,23 +101,23 @@ export default function WorkshopPreferences({ data, onNext, onBack }: WorkshopPr
               value={expectations}
               onChange={(e) => setExpectations(e.target.value)}
               placeholder="Share your learning goals and expectations..."
-              className="bg-slate-800/50 border-slate-600 text-white min-h-[120px]"
+              className="neon-input text-gray-800 placeholder-gray-500 min-h-[120px]"
             />
-            {errors.expectations && <p className="text-red-400 text-sm">{errors.expectations}</p>}
+            {errors.expectations && <p className="text-red-500 text-sm">{errors.expectations}</p>}
           </div>
 
           <div className="flex gap-4">
             <Button 
               onClick={onBack}
               variant="outline"
-              className="flex-1 border-slate-600 text-white hover:bg-slate-800"
+              className="flex-1 border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300"
             >
               <ChevronLeft className="w-4 h-4 mr-2" />
               Back
             </Button>
             <Button 
               onClick={validateAndNext}
-              className="flex-1 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white"
+              className="flex-1 neon-button text-white font-semibold transition-all duration-300"
             >
               Continue
             </Button>

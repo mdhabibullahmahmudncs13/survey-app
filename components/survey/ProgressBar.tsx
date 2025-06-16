@@ -12,23 +12,20 @@ export default function ProgressBar({ currentStep, totalSteps }: ProgressBarProp
 
   return (
     <div className="w-full space-y-2">
-      <div className="flex justify-between text-sm text-slate-300">
+      <div className="flex justify-between text-sm text-gray-600 font-medium">
         <span>Step {currentStep} of {totalSteps}</span>
         <span>{Math.round(progress)}% Complete</span>
       </div>
-      <Progress 
-        value={progress} 
-        className="h-2 bg-slate-800 border border-slate-700"
-        // Custom styling for the progress bar
-        style={{
-          background: 'linear-gradient(to right, #1e293b, #334155)',
-        }}
-      />
-      <style jsx global>{`
-        .progress-bar [data-state="indeterminate"] {
-          background: linear-gradient(90deg, #0066ff, #00ff88);
-        }
-      `}</style>
+      <div className="relative">
+        <Progress 
+          value={progress} 
+          className="h-3 bg-gray-200 border border-gray-300 rounded-full overflow-hidden"
+        />
+        <div 
+          className="absolute top-0 left-0 h-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-full transition-all duration-500 ease-out neon-glow"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
     </div>
   );
 }
