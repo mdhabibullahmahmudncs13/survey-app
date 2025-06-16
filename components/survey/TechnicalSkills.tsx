@@ -30,13 +30,17 @@ const programmingLanguages = [
 ];
 
 const availabilityOptions = [
-  'Weekday mornings (9 AM - 12 PM)',
-  'Weekday afternoons (1 PM - 5 PM)',
-  'Weekday evenings (6 PM - 9 PM)',
-  'Weekend mornings (9 AM - 12 PM)',
-  'Weekend afternoons (1 PM - 5 PM)',
-  'Weekend evenings (6 PM - 9 PM)',
-  'Flexible - any time works'
+  '20 June (9 AM - 4 PM)',
+  '21 June (9 AM - 4 PM)',
+  '22 June (9 AM - 4 PM)',
+  '23 June (9 AM - 4 PM)',
+  '24 June (9 AM - 4 PM)',
+  '25 June (9 AM - 4 PM)',
+  '26 June (9 AM - 4 PM)',
+  '27 June (9 AM - 4 PM)',
+  '28 June (9 AM - 4 PM)',
+  '29 June (9 AM - 4 PM)',
+  '30 June (9 AM - 4 PM)'
 ];
 
 export default function TechnicalSkills({ data, onNext, onBack }: TechnicalSkillsProps) {
@@ -60,7 +64,7 @@ export default function TechnicalSkills({ data, onNext, onBack }: TechnicalSkill
       newErrors.languages = 'Please select at least one option (or "No programming experience")';
     }
     if (!availability) {
-      newErrors.availability = 'Please select your availability';
+      newErrors.availability = 'Please select your preferred workshop date';
     }
 
     setErrors(newErrors);
@@ -109,11 +113,14 @@ export default function TechnicalSkills({ data, onNext, onBack }: TechnicalSkill
           <div className="space-y-2">
             <Label className="text-white flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              Preferred Workshop Timing *
+              Preferred Workshop Date *
             </Label>
+            <p className="text-slate-300 text-sm mb-3">
+              Workshop runs from 20 June to 30 June (9 AM - 4 PM daily). Select your preferred date:
+            </p>
             <Select value={availability} onValueChange={setAvailability}>
               <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
-                <SelectValue placeholder="Select your preferred timing" />
+                <SelectValue placeholder="Select your preferred workshop date" />
               </SelectTrigger>
               <SelectContent className="bg-slate-800 border-slate-600">
                 {availabilityOptions.map((option) => (

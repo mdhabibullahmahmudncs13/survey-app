@@ -73,7 +73,7 @@ export default function AdminPanel() {
           workshopTopics: ['arduino-basics', 'sensor-integration'],
           expectations: 'I want to learn the basics of robotics and how to program Arduino boards.',
           programmingLanguages: ['Python', 'C/C++'],
-          availability: 'Weekend mornings (9 AM - 12 PM)',
+          availability: '22 June (9 AM - 4 PM)',
           additionalComments: 'Very excited to participate!',
           submitted_at: '2025-01-08T10:30:00Z'
         },
@@ -89,7 +89,7 @@ export default function AdminPanel() {
           workshopTopics: ['ai-robotics', 'computer-vision'],
           expectations: 'Looking forward to advanced AI applications in robotics.',
           programmingLanguages: ['Python', 'MATLAB', 'JavaScript'],
-          availability: 'Weekday evenings (6 PM - 9 PM)',
+          availability: '25 June (9 AM - 4 PM)',
           additionalComments: '',
           submitted_at: '2025-01-08T14:15:00Z'
         }
@@ -290,6 +290,7 @@ export default function AdminPanel() {
                     <TableHead className="text-slate-300">Department</TableHead>
                     <TableHead className="text-slate-300">Batch</TableHead>
                     <TableHead className="text-slate-300">Experience</TableHead>
+                    <TableHead className="text-slate-300">Preferred Date</TableHead>
                     <TableHead className="text-slate-300">Submitted</TableHead>
                     <TableHead className="text-slate-300">Actions</TableHead>
                   </TableRow>
@@ -324,6 +325,9 @@ export default function AdminPanel() {
                         >
                           {submission.experienceLevel}
                         </Badge>
+                      </TableCell>
+                      <TableCell className="text-slate-300">
+                        {submission.availability}
                       </TableCell>
                       <TableCell className="text-slate-300">
                         {new Date(submission.submitted_at).toLocaleDateString()}
@@ -389,7 +393,7 @@ export default function AdminPanel() {
                                   </div>
                                 </div>
                                 <div>
-                                  <Label className="text-slate-300">Availability</Label>
+                                  <Label className="text-slate-300">Preferred Workshop Date</Label>
                                   <p className="text-white">{submission.availability}</p>
                                 </div>
                                 <div>

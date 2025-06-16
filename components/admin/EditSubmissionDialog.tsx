@@ -43,13 +43,17 @@ const programmingLanguages = [
 ];
 
 const availabilityOptions = [
-  'Weekday mornings (9 AM - 12 PM)',
-  'Weekday afternoons (1 PM - 5 PM)',
-  'Weekday evenings (6 PM - 9 PM)',
-  'Weekend mornings (9 AM - 12 PM)',
-  'Weekend afternoons (1 PM - 5 PM)',
-  'Weekend evenings (6 PM - 9 PM)',
-  'Flexible - any time works'
+  '20 June (9 AM - 4 PM)',
+  '21 June (9 AM - 4 PM)',
+  '22 June (9 AM - 4 PM)',
+  '23 June (9 AM - 4 PM)',
+  '24 June (9 AM - 4 PM)',
+  '25 June (9 AM - 4 PM)',
+  '26 June (9 AM - 4 PM)',
+  '27 June (9 AM - 4 PM)',
+  '28 June (9 AM - 4 PM)',
+  '29 June (9 AM - 4 PM)',
+  '30 June (9 AM - 4 PM)'
 ];
 
 export default function EditSubmissionDialog({ 
@@ -273,7 +277,7 @@ export default function EditSubmissionDialog({
 
           {/* Availability */}
           <div className="space-y-2">
-            <Label className="text-white">Availability *</Label>
+            <Label className="text-white">Preferred Workshop Date *</Label>
             <Select value={formData.availability} onValueChange={(value) => setFormData({ ...formData, availability: value })}>
               <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
                 <SelectValue />
