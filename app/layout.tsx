@@ -7,10 +7,12 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'NCC Robotics Workshop Registration',
   description: 'Register for the NCC Robotics Workshop - Learn Arduino, AI, and cutting-edge robotics technology',
-  icons: {
-    icon: '/ncc.png',
-    shortcut: '/ncc.png',
-    apple: '/ncc.png',
+  keywords: 'robotics, workshop, NCC, Arduino, AI, programming, engineering',
+  authors: [{ name: 'NCC Robotics Team' }],
+  openGraph: {
+    title: 'NCC Robotics Workshop Registration',
+    description: 'Join our comprehensive robotics workshop and learn cutting-edge technology',
+    type: 'website',
   },
 };
 
@@ -21,11 +23,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/ncc.png" type="image/png" />
-        <link rel="shortcut icon" href="/ncc.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/ncc.png" />
-      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );

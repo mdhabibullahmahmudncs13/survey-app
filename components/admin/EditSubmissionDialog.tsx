@@ -9,13 +9,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Save, X } from 'lucide-react';
-import { SurveyResponse } from '@/types/survey';
+import { SurveySubmission } from '@/lib/supabase';
 
 interface EditSubmissionDialogProps {
-  submission: SurveyResponse & { id: string; submitted_at: string };
+  submission: SurveySubmission;
   isOpen: boolean;
   onClose: () => void;
-  onSave: (updatedSubmission: SurveyResponse & { id: string; submitted_at: string }) => void;
+  onSave: (updatedSubmission: SurveySubmission) => void;
 }
 
 const workshopTopics = [
@@ -43,17 +43,17 @@ const programmingLanguages = [
 ];
 
 const availabilityOptions = [
-  '20 June 2025 (9 AM - 4 PM)',
-  '21 June 2025 (9 AM - 4 PM)',
-  '22 June 2025 (9 AM - 4 PM)',
-  '23 June 2025 (9 AM - 4 PM)',
-  '24 June 2025 (9 AM - 4 PM)',
-  '25 June 2025 (9 AM - 4 PM)',
-  '26 June 2025 (9 AM - 4 PM)',
-  '27 June 2025 (9 AM - 4 PM)',
-  '28 June 2025 (9 AM - 4 PM)',
-  '29 June 2025 (9 AM - 4 PM)',
-  '30 June 2025 (9 AM - 4 PM)'
+  '20 June 2025-Friday-(9 AM - 4 PM)',
+  '21 June 2025-Saturday-(9 AM - 4 PM)',
+  '22 June 2025-Sunday-(9 AM - 4 PM)',
+  '23 June 2025-Monday-(9 AM - 4 PM)',
+  '24 June 2025-Tuesday-(9 AM - 4 PM)',
+  '25 June 2025-Wednesday-(9 AM - 4 PM)',
+  '26 June 2025-Thursday-(9 AM - 4 PM)',
+  '27 June 2025-Friday-(9 AM - 4 PM)',
+  '28 June 2025-Saturday-(9 AM - 4 PM)',
+  '29 June 2025-Sunday-(9 AM - 4 PM)',
+  '30 June 2025-Monday-(9 AM - 4 PM)'
 ];
 
 export default function EditSubmissionDialog({ 
@@ -69,12 +69,12 @@ export default function EditSubmissionDialog({
     if (checked) {
       setFormData({
         ...formData,
-        workshopTopics: [...formData.workshopTopics, topicId]
+        workshop_topics: [...formData.workshop_topics, topicId]
       });
     } else {
       setFormData({
         ...formData,
-        workshopTopics: formData.workshopTopics.filter(id => id !== topicId)
+        workshop_topics: formData.workshop_topics.filter(id => id !== topicId)
       });
     }
   };
@@ -83,12 +83,12 @@ export default function EditSubmissionDialog({
     if (checked) {
       setFormData({
         ...formData,
-        programmingLanguages: [...formData.programmingLanguages, language]
+        programming_languages: [...formData.programming_languages, language]
       });
     } else {
       setFormData({
         ...formData,
-        programmingLanguages: formData.programmingLanguages.filter(lang => lang !== language)
+        programming_languages: formData.programming_languages.filter(lang => lang !== language)
       });
     }
   };
@@ -99,12 +99,12 @@ export default function EditSubmissionDialog({
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
-    if (!formData.studentId.trim()) newErrors.studentId = 'Student ID is required';
+    if (!formData.student_id.trim()) newErrors.student_id = 'Student ID is required';
     if (!formData.batch) newErrors.batch = 'Batch is required';
     if (!formData.department) newErrors.department = 'Department is required';
-    if (!formData.experienceLevel) newErrors.experienceLevel = 'Experience level is required';
-    if (formData.workshopTopics.length === 0) newErrors.topics = 'At least one topic is required';
-    if (formData.programmingLanguages.length === 0) newErrors.languages = 'At least one language is required';
+    if (!formData.experience_level) newErrors.experience_level = 'Experience level is required';
+    if (formData.workshop_topics.length === 0) newErrors.topics = 'At least one topic is required';
+    if (formData.programming_languages.length === 0) newErrors.languages = 'At least one language is required';
     if (!formData.availability) newErrors.availability = 'Availability is required';
     if (!formData.expectations.trim()) newErrors.expectations = 'Expectations are required';
 
@@ -172,19 +172,19 @@ export default function EditSubmissionDialog({
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="edit-studentId" className="text-gray-800 font-medium">Student ID *</Label>
+                <Label htmlFor="edit-student-id" className="text-gray-800 font-medium">Student ID *</Label>
                 <Input
-                  id="edit-studentId"
-                  value={formData.studentId}
-                  onChange={(e) => setFormData({ ...formData, studentId: e.target.value })}
+                  id="edit-student-id"
+                  value={formData.student_id}
+                  onChange={(e) => setFormData({ ...formData, student_id: e.target.value })}
                   className="neon-input text-gray-800"
                 />
-                {errors.studentId && <p className="text-red-500 text-sm">{errors.studentId}</p>}
+                {errors.student_id && <p className="text-red-500 text-sm">{errors.student_id}</p>}
               </div>
 
               <div className="space-y-2">
                 <Label className="text-gray-800 font-medium">Batch *</Label>
-                <Select value={formData.batch} onValueChange={(value) => setFormData({ ...formData, batch: value as any })}>
+                <Select value={formData.batch} onValueChange={(value) => setFormData({ ...formData, batch: value })}>
                   <SelectTrigger className="neon-input text-gray-800">
                     <SelectValue />
                   </SelectTrigger>
@@ -201,7 +201,7 @@ export default function EditSubmissionDialog({
 
               <div className="space-y-2">
                 <Label className="text-gray-800 font-medium">Department *</Label>
-                <Select value={formData.department} onValueChange={(value) => setFormData({ ...formData, department: value as any })}>
+                <Select value={formData.department} onValueChange={(value) => setFormData({ ...formData, department: value })}>
                   <SelectTrigger className="neon-input text-gray-800">
                     <SelectValue />
                   </SelectTrigger>
@@ -219,7 +219,7 @@ export default function EditSubmissionDialog({
 
             <div className="space-y-2">
               <Label className="text-gray-800 font-medium">Experience Level *</Label>
-              <Select value={formData.experienceLevel} onValueChange={(value) => setFormData({ ...formData, experienceLevel: value as any })}>
+              <Select value={formData.experience_level} onValueChange={(value) => setFormData({ ...formData, experience_level: value })}>
                 <SelectTrigger className="neon-input text-gray-800">
                   <SelectValue />
                 </SelectTrigger>
@@ -229,7 +229,7 @@ export default function EditSubmissionDialog({
                   <SelectItem value="advanced" className="text-gray-800">Advanced - Experienced in robotics</SelectItem>
                 </SelectContent>
               </Select>
-              {errors.experienceLevel && <p className="text-red-500 text-sm">{errors.experienceLevel}</p>}
+              {errors.experience_level && <p className="text-red-500 text-sm">{errors.experience_level}</p>}
             </div>
           </div>
 
@@ -241,7 +241,7 @@ export default function EditSubmissionDialog({
                 <div key={topic.id} className="flex items-center space-x-3 p-3 rounded-lg neon-bg border border-purple-200/50">
                   <Checkbox
                     id={`edit-${topic.id}`}
-                    checked={formData.workshopTopics.includes(topic.id)}
+                    checked={formData.workshop_topics.includes(topic.id)}
                     onCheckedChange={(checked) => handleTopicChange(topic.id, checked as boolean)}
                     className="border-purple-400 data-[state=checked]:bg-purple-500"
                   />
@@ -262,7 +262,7 @@ export default function EditSubmissionDialog({
                 <div key={language} className="flex items-center space-x-3 p-3 rounded-lg neon-bg border border-cyan-200/50">
                   <Checkbox
                     id={`edit-lang-${language}`}
-                    checked={formData.programmingLanguages.includes(language)}
+                    checked={formData.programming_languages.includes(language)}
                     onCheckedChange={(checked) => handleLanguageChange(language, checked as boolean)}
                     className="border-cyan-400 data-[state=checked]:bg-cyan-500"
                   />
@@ -310,8 +310,8 @@ export default function EditSubmissionDialog({
             <Label htmlFor="edit-comments" className="text-gray-800 font-medium">Additional Comments</Label>
             <Textarea
               id="edit-comments"
-              value={formData.additionalComments || ''}
-              onChange={(e) => setFormData({ ...formData, additionalComments: e.target.value })}
+              value={formData.additional_comments || ''}
+              onChange={(e) => setFormData({ ...formData, additional_comments: e.target.value })}
               className="neon-input text-gray-800 min-h-[80px]"
             />
           </div>
