@@ -1,9 +1,18 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+// Get environment variables with fallbacks for development
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Check if environment variables are set
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('Supabase environment variables not configured. Using fallback mode.');
+}
+
+// Create Supabase client with error handling
+export const supabase = supabaseUrl && supabaseAnonKey 
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
 
 // Database types
 export interface SurveySubmission {
@@ -25,6 +34,10 @@ export interface SurveySubmission {
 
 // Helper functions
 export const checkSupabaseConnection = async () => {
+  if (!supabase) {
+    return { success: false, error: new Error('Supabase not configured') };
+  }
+
   try {
     const { data, error } = await supabase
       .from('survey_submissions')
@@ -42,6 +55,10 @@ export const checkSupabaseConnection = async () => {
 };
 
 export const submitSurvey = async (data: Omit<SurveySubmission, 'id' | 'created_at'>) => {
+  if (!supabase) {
+    throw new Error('Supabase not configured. Please check your environment variables.');
+  }
+
   try {
     const { data: result, error } = await supabase
       .from('survey_submissions')
@@ -59,6 +76,10 @@ export const submitSurvey = async (data: Omit<SurveySubmission, 'id' | 'created_
 };
 
 export const fetchSubmissions = async () => {
+  if (!supabase) {
+    throw new Error('Supabase not configured. Please check your environment variables.');
+  }
+
   try {
     const { data, error } = await supabase
       .from('survey_submissions')
@@ -75,6 +96,10 @@ export const fetchSubmissions = async () => {
 };
 
 export const updateSubmission = async (id: string, updates: Partial<SurveySubmission>) => {
+  if (!supabase) {
+    throw new Error('Supabase not configured. Please check your environment variables.');
+  }
+
   try {
     const { data, error } = await supabase
       .from('survey_submissions')
@@ -93,6 +118,10 @@ export const updateSubmission = async (id: string, updates: Partial<SurveySubmis
 };
 
 export const deleteSubmission = async (id: string) => {
+  if (!supabase) {
+    throw new Error('Supabase not configured. Please check your environment variables.');
+  }
+
   try {
     const { error } = await supabase
       .from('survey_submissions')
